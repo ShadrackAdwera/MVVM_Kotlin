@@ -1,7 +1,8 @@
-package com.adwera.mvvmkotlin
+package com.adwera.mvvmkotlin.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.adwera.mvvmkotlin.R
 
 class MainActivity : AppCompatActivity() {
 
