@@ -1,9 +1,11 @@
 package com.adwera.mvvmkotlin.data.database.entities
 
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 const val CURRENT_USER_ID = 0
 
+@Entity(tableName = "User")
 data class User(
     var id : Int? = null,
     var name : String?=null,
