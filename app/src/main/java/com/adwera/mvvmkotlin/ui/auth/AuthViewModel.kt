@@ -6,7 +6,7 @@ import com.adwera.mvvmkotlin.data.repositories.UserRepository
 import com.adwera.mvvmkotlin.utils.ApiException
 import com.adwera.mvvmkotlin.utils.Coroutines
 
-class AuthViewModel : ViewModel() {
+class AuthViewModel(private val repository: UserRepository) : ViewModel() {
     var email: String? = null
     var password: String? = null
 
@@ -21,7 +21,7 @@ class AuthViewModel : ViewModel() {
 
         Coroutines.main {
             try {
-                val loginResponse = UserRepository().userLogin(email!!, password!!)
+                val loginResponse = repository.userLogin(email!!, password!!)
                 loginResponse.user?.let {
                     authListener?.onSuccess(it)
                     return@main
