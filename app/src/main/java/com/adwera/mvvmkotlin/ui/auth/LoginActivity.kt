@@ -13,6 +13,7 @@ import com.adwera.mvvmkotlin.data.database.entities.User
 import com.adwera.mvvmkotlin.databinding.ActivityLoginBinding
 import com.adwera.mvvmkotlin.utils.hide
 import com.adwera.mvvmkotlin.utils.show
+import com.adwera.mvvmkotlin.utils.snackbar
 import com.adwera.mvvmkotlin.utils.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -32,11 +33,11 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
     override fun onSuccess(user: User) {
         progress_login.hide()
-        toast("Hello, ${user.name}")
+        root_layout.snackbar("Hello, ${user.name}")
     }
 
     override fun onFailure(message:String) {
         progress_login.hide()
-       toast(message)
+        root_layout.snackbar(message)
     }
 }
