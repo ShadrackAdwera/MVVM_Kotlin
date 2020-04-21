@@ -3,6 +3,7 @@ package com.adwera.mvvmkotlin.ui.auth
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.adwera.mvvmkotlin.data.repositories.UserRepository
+import com.adwera.mvvmkotlin.utils.ApiException
 import com.adwera.mvvmkotlin.utils.Coroutines
 
 class AuthViewModel : ViewModel() {
@@ -19,12 +20,17 @@ class AuthViewModel : ViewModel() {
         }
 
         Coroutines.main {
-            val loginResponse = UserRepository().userLogin(email!!, password!!)
-            if (loginResponse.isSuccessful) {
-                authListener?.onSuccess(loginResponse.body()?.user!!)
-            } else {
-                authListener?.onFailure("Error Code: ${loginResponse.code()}")
+            try {
+                val loginResponse = UserRepository().userLogin(email!!, password!!)
+                loginResponse.user?.let {
+                    authListener?.onSuccess(it)
+                    return@main
+                }
+                authListener?.onFailure(loginResponse.message!!)
+            } catch (e: ApiException) {
+                authListener?.onFailure(e.localizedMessage!!)
             }
+
         }
     }
 }
