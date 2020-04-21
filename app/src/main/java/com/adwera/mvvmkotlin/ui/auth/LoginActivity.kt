@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.adwera.mvvmkotlin.R
+import com.adwera.mvvmkotlin.data.database.entities.User
 import com.adwera.mvvmkotlin.databinding.ActivityLoginBinding
 import com.adwera.mvvmkotlin.utils.hide
 import com.adwera.mvvmkotlin.utils.show
@@ -29,11 +30,9 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         progress_login.show()
     }
 
-    override fun onSuccess(loginResponse: LiveData<String>) {
-        loginResponse.observe(this, Observer {
-            progress_login.hide()
-            toast(it)
-        })
+    override fun onSuccess(user: User) {
+        progress_login.hide()
+        toast("Hello, ${user.name}")
     }
 
     override fun onFailure(message:String) {
