@@ -12,7 +12,7 @@ import com.adwera.mvvmkotlin.data.database.entities.User
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun upsert(user: User): Long
+    suspend fun upsert(user: User): Long
 
     @Query("SELECT * FROM User WHERE uid = $CURRENT_USER_ID")
     fun getUser(): LiveData<User>

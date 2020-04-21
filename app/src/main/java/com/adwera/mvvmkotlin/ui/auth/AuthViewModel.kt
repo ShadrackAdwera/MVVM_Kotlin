@@ -12,6 +12,8 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
 
     var authListener: AuthListener? = null
 
+    fun getLoggedInUser() = repository.getUser()
+
     fun onLoginClicked(view: View) {
         authListener?.onStarted()
         if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
@@ -24,6 +26,7 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
                 val loginResponse = repository.userLogin(email!!, password!!)
                 loginResponse.user?.let {
                     authListener?.onSuccess(it)
+                    repository.saveUser(it)
                     return@main
                 }
                 authListener?.onFailure(loginResponse.message!!)

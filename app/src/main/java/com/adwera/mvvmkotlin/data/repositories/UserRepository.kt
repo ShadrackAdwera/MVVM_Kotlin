@@ -16,4 +16,8 @@ class UserRepository(private val myApi: MyApi,
     }
     //save user to local database
     suspend fun saveUser(user: User) = appDatabase.getUserDao().upsert(user = user)
+
+    fun getUser() = appDatabase.getUserDao().getUser()
+
+
 }
