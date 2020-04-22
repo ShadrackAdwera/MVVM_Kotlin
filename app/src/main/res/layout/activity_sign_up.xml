@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="viewmodel"
             type="com.adwera.mvvmkotlin.ui.auth.AuthViewModel" />
     </data>
-    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/root_layout_sign_up"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -99,17 +100,33 @@
                 app:layout_constraintTop_toBottomOf="@+id/sign_up_password" />
 
             <Button
+                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
-                android:backgroundTint="#000000"
                 android:layout_marginTop="52dp"
+                android:backgroundTint="#000000"
                 android:elevation="10dp"
+                android:onClick="@{viewmodel::onSignUpClicked}"
                 android:text="@string/sign_up"
                 android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="@+id/sign_up_confirm_password"
                 app:layout_constraintStart_toStartOf="@+id/sign_up_confirm_password"
                 app:layout_constraintTop_toBottomOf="@+id/sign_up_confirm_password" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewmodel::onLogin}"
+                android:layout_marginStart="87dp"
+                android:layout_marginTop="62dp"
+                android:layout_marginEnd="88dp"
+                android:text="@string/already_have_an_account_login_here"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

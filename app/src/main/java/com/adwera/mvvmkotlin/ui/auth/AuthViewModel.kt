@@ -77,4 +77,9 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
             view.context.startActivity(it)
         }
     }
+    fun onLogin(view:View){
+        Intent(view.context, LoginActivity::class.java).also {
+            view.context.startActivity(it)
+        }
+    }
 }
