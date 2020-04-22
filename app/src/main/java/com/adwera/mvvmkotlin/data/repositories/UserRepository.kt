@@ -10,10 +10,16 @@ class UserRepository(private val myApi: MyApi,
                      private val appDatabase: AppDatabase
 
 ) : SafeApiRequest() {
-
+    //api user login
     suspend fun userLogin(email: String, password: String): AuthResponse {
         return apiRequest { myApi.userLogin(email, password) }
     }
+
+    //api user signup
+    suspend fun userSignUp(name:String, email:String, password:String) : AuthResponse {
+        return apiRequest { myApi.userSignUp(name, email, password)}
+    }
+
     //save user to local database
     suspend fun saveUser(user: User) = appDatabase.getUserDao().upsert(user = user)
 
