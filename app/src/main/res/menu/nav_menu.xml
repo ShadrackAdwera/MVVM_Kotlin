@@ -4,13 +4,13 @@
     >
 
     <item
-        android:id="@+id/fragment_home"
+        android:id="@+id/profileFragment"
         android:title="Home"
         android:icon="@drawable/ic_home"
         />
     <item
-        android:id="@+id/fragment_users"
-        android:title="Users"
+        android:id="@+id/quotesFragment"
+        android:title="Quotes"
         android:icon="@drawable/ic_users"
         />
 

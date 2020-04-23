@@ -1,7 +1,6 @@
 package com.adwera.mvvmkotlin
 
 import android.app.Application
-import com.adwera.mvvmkotlin.ui.auth.AuthViewModelFactory
 import com.adwera.mvvmkotlin.ui.home.profile.ProfileModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -19,8 +18,8 @@ class MVVMApplication : Application(), KodeinAware {
 //        bind() from singleton { MyApi(instance()) }
 //        bind() from singleton { AppDatabase(instance()) }
 //        bind() from singleton { UserRepository(instance(), instance()) }
-        bind() from provider { AuthViewModelFactory(instance()) }
-        bind() from provider {ProfileModelFactory(instance())}
+        // bind() from provider { AuthViewModelFactory(instance()) }
+        bind() from provider { ProfileModelFactory(instance()) }
 
     }
 
