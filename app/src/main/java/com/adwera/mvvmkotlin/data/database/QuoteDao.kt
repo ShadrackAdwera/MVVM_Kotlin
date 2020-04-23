@@ -13,7 +13,7 @@ interface QuoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveAllQuotes(quotes:List<Quote>)
 
-    @Query("SELECT * FROM quote ORDER BY id DESC")
+    @Query("SELECT * FROM Quote ORDER BY id DESC")
     fun getAllQuotes() : LiveData<List<Quote>>
 
 }

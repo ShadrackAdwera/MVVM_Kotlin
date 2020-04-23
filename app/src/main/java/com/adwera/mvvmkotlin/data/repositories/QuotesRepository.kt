@@ -39,9 +39,7 @@ class QuotesRepository(private val api: MyApi, private val db: AppDatabase) : Sa
 
     private fun saveQuotes(quotes: List<Quote>?) {
         Coroutines.io {
-            if (quotes != null) {
-                db.getQuoteDao().saveAllQuotes(quotes)
-            }
+                db.getQuoteDao().saveAllQuotes(quotes!!)
         }
     }
 }
