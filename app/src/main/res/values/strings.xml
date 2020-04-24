@@ -9,4 +9,6 @@
     <string name="sign_up">Sign Up</string>
     <string name="don_t_have_an_account_create_one">Don\'t have an account? Create One</string>
     <string name="already_have_an_account_login_here">Already have an account? Login Here</string>
+    <string name="lorem">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</string>
+    <string name="lorem_twenty">Lorem Twenty</string>
 </resources>
