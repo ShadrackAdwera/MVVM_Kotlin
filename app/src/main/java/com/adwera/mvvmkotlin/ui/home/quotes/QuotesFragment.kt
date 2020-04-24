@@ -12,6 +12,7 @@ import com.adwera.mvvmkotlin.R
 import com.adwera.mvvmkotlin.data.database.AppDatabase
 import com.adwera.mvvmkotlin.data.network.MyApi
 import com.adwera.mvvmkotlin.data.network.NetworkConnectorInterceptor
+import com.adwera.mvvmkotlin.data.preferences.PreferenceProvider
 import com.adwera.mvvmkotlin.data.repositories.QuotesRepository
 import com.adwera.mvvmkotlin.utils.Coroutines
 import com.adwera.mvvmkotlin.utils.toast
@@ -32,7 +33,8 @@ class QuotesFragment : Fragment() {
         val networkConnectorInterceptor = NetworkConnectorInterceptor(this.requireContext())
         val api = MyApi(networkConnectorInterceptor)
         val db = AppDatabase(this.requireContext())
-        val repo = QuotesRepository(api, db)
+        val prefs = PreferenceProvider(this.requireContext())
+        val repo = QuotesRepository(api, db, prefs)
         val factory = QuotesModelFactory(repo)
         viewModel = ViewModelProvider(this, factory).get(QuotesViewModel::class.java)
         // TODO: Use the ViewModel
